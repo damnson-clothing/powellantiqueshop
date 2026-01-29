@@ -1,1 +1,0 @@
-import{D as r,E as o,p as n}from"./6JbxToWv.js";import{u as s}from"./BRrJ57S3.js";const c=r(async(e,u)=>{let a,i;if(e.path.startsWith("/admin")&&e.path!=="/admin/login")try{const{data:t}=([a,i]=o(()=>s("/api/auth/me","$KZnnewes6S")),a=await a,i(),a);if(!t.value||!t.value.authenticated)return n("/admin/login")}catch{return n("/admin/login")}});export{c as default};
