@@ -73,7 +73,16 @@ export default defineNuxtConfig({
   // Nitro server configuration
   nitro: {
     preset: 'vercel',
-    node: true,
-    minify: true
+    esbuild: {
+      options: {
+        target: 'esnext'
+      }
+    },
+    rollupConfig: {
+      external: [],
+      output: {
+        format: 'esm'
+      }
+    }
   }
 })

@@ -1,7 +1,10 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": ".output",
+  "framework": null,
   "functions": {
-    "api/**/*.js": {
-      "includeFiles": "node_modules/jsonwebtoken/**"
+    "**/*.func": {
+      "runtime": "nodejs20.x"
     }
   }
 }
