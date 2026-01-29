@@ -74,7 +74,10 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'vercel',
     externals: {
-      inline: ['jsonwebtoken']
+      traceInclude: [
+        'node_modules/jsonwebtoken/**',
+        'node_modules/bcrypt/**'
+      ]
     }
   }
 })
