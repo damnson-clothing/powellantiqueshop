@@ -1,4 +1,5 @@
 import type { H3Event } from 'h3'
+import { jwtVerify } from 'jose'
 
 export async function verifyAdminAuth(event: H3Event) {
   const config = useRuntimeConfig()
@@ -20,10 +21,10 @@ export async function verifyAdminAuth(event: H3Event) {
   }
 
   try {
-    // Dynamic import for better bundling compatibility
-    const jwt = await import('jsonwebtoken')
-    const decoded = jwt.default.verify(token, config.jwtSecret) as { id: string; username: string; email: string }
-    return decoded
+    // Verify JWT token using jose
+    const secret = new TextEncoder().encode(config.jwtSecret)
+    const verified = await jwtVerify(token, secret)
+    return verified.payload as { id: string; username: string; email: string }
   } catch (err) {
     throw createError({
       statusCode: 401,

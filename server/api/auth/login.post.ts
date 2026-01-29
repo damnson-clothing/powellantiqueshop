@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
+import { SignJWT } from 'jose'
 
 const prisma = new PrismaClient()
 
@@ -45,17 +46,16 @@ export default defineEventHandler(async (event) => {
       data: { lastLogin: new Date() }
     })
 
-    // Generate JWT token with dynamic import
-    const jwt = await import('jsonwebtoken')
-    const token = jwt.default.sign(
-      { 
-        id: admin.id, 
-        username: admin.username,
-        email: admin.email 
-      },
-      config.jwtSecret,
-      { expiresIn: '24h' }
-    )
+// Generate JWT token using jose
+    const secret = new TextEncoder().encode(config.jwtSecret)
+    const token = await new SignJWT({
+      id: admin.id,
+      username: admin.username,
+      email: admin.email
+    })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setExpirationTime('24h')
+      .sign(secret)
 
     // Set token as HTTP-only cookie
     setCookie(event, 'admin_token', token, {
