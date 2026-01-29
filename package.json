@@ -1,0 +1,43 @@
+{
+  "name": "powells-antique-shop",
+  "version": "1.0.0",
+  "description": "Powell's Online Antique Store - Vintage Bags & Collectibles Marketplace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.7.0",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@prisma/client": "^5.18.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "nuxt": "^3.13.0",
+    "pinia": "^2.2.0",
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^0.5.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.14.15",
+    "eslint": "^9.8.0",
+    "prisma": "^5.18.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.4",
+    "vue-tsc": "^2.0.0"
+  }
+}

@@ -1,0 +1,1 @@
+import{V as a,p as e}from"./sYomq8En.js";const r=a((t,n)=>{if(!localStorage.getItem("admin_token")&&t.path.startsWith("/admin")&&t.path!=="/admin/login")return e("/admin/login")});export{r as default};
