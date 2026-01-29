@@ -1,5 +1,4 @@
 import type { H3Event } from 'h3'
-import jwt from 'jsonwebtoken'
 
 export async function verifyAdminAuth(event: H3Event) {
   const config = useRuntimeConfig()
@@ -21,7 +20,9 @@ export async function verifyAdminAuth(event: H3Event) {
   }
 
   try {
-    const decoded = jwt.verify(token, config.jwtSecret) as { id: string; username: string; email: string }
+    // Dynamic import for better bundling compatibility
+    const jwt = await import('jsonwebtoken')
+    const decoded = jwt.default.verify(token, config.jwtSecret) as { id: string; username: string; email: string }
     return decoded
   } catch (err) {
     throw createError({

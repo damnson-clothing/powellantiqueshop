@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 
 const prisma = new PrismaClient()
 
@@ -46,8 +45,9 @@ export default defineEventHandler(async (event) => {
       data: { lastLogin: new Date() }
     })
 
-    // Generate JWT token
-    const token = jwt.sign(
+    // Generate JWT token with dynamic import
+    const jwt = await import('jsonwebtoken')
+    const token = jwt.default.sign(
       { 
         id: admin.id, 
         username: admin.username,
