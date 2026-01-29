@@ -73,11 +73,7 @@ export default defineNuxtConfig({
   // Nitro server configuration
   nitro: {
     preset: 'vercel',
-    externals: {
-      traceInclude: [
-        'node_modules/jsonwebtoken/**',
-        'node_modules/bcrypt/**'
-      ]
-    }
+    node: true,
+    minify: true
   }
 })
