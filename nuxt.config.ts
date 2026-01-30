@@ -1,4 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// 🚨 MAINTENANCE MODE TOGGLE 🚨
+// Set to 'true' to put entire site in maintenance mode
+// Set to 'false' to bring site back online
+const MAINTENANCE_MODE = 'true'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
@@ -20,7 +26,7 @@ export default defineNuxtConfig({
       apiBase: process.env.API_BASE_URL || '/api',
       siteName: "Powell's Antique Shop",
       siteDescription: 'Vintage Bags & Collectibles Marketplace',
-      maintenanceMode: process.env.MAINTENANCE_MODE || 'false'
+      maintenanceMode: MAINTENANCE_MODE
     }
   },
 
