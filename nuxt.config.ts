@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.API_BASE_URL || '/api',
       siteName: "Powell's Antique Shop",
-      siteDescription: 'Vintage Bags & Collectibles Marketplace'
+      siteDescription: 'Vintage Bags & Collectibles Marketplace',
+      maintenanceMode: process.env.MAINTENANCE_MODE || 'false'
     }
   },
 
